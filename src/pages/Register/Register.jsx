@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
 import registerlottie from '../../assets/lotties/register.json'
 import Lottie from 'lottie-react';
+import { AuthContext } from '../../context/AuthContext/AuthContext';
 const Register = () => {
+  const {createUser} = use(AuthContext)
+  const handleRegister = e =>{
+    e.preventDefault();
+    const name = e.target.name.value;
+        const email = e.target.email.value;
+        const photo = e.target.photo.value;
+        const password = e.target.password.value;
+        console.log(name,email)
+        createUser(email,password)
+        .then(result=>{
+          console.log(result.user)
+        })
+        .catch((error) => {
+    console.log(error)
+  });
+  }
     return (
         <div className='flex justify-center items-center mt-10 mb-10'> 
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -14,7 +31,7 @@ const Register = () => {
             <div className='p-3'>
                 <button className='btn w-full flex gap-5'><FcGoogle size={25} /> <p>Login With Google</p></button>
                   </div>
-              <form className="card-body">
+              <form onSubmit={handleRegister} className="card-body">
               
                 <fieldset className="fieldset">
                 <label className="label">Name</label>
