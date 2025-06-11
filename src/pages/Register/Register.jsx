@@ -4,8 +4,9 @@ import { Link } from 'react-router';
 import registerlottie from '../../assets/lotties/register.json'
 import Lottie from 'lottie-react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
+import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
 const Register = () => {
-  const {createUser} = use(AuthContext)
+  const {createUser,googleLogInUser,setUser} = use(AuthContext)
   const handleRegister = e =>{
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,12 +16,30 @@ const Register = () => {
         console.log(name,email)
         createUser(email,password)
         .then(result=>{
-          console.log(result.user)
+          const user = result.user;
+          updateProfile(user, {
+                displayName: name,
+                photoURL: photo
+            }).then(() => {
+                setUser({ ...user, displayName: name, photoURL: photo });
+                console.log("User created & profile updated:", user);
+                
+            });
         })
         .catch((error) => {
     console.log(error)
   });
   }
+  const provider = new GoogleAuthProvider
+        const handlaGooglelogin = () =>{
+           googleLogInUser(provider)
+           .then(result=>{
+            console.log(result)
+          })
+          .catch(error=>{
+            console.log(error)
+          })
+        }
     return (
         <div className='flex justify-center items-center mt-10 mb-10'> 
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -29,7 +48,7 @@ const Register = () => {
   </div>
             <h1 className="text-5xl font-bold p-3">Signup now!</h1>
             <div className='p-3'>
-                <button className='btn w-full flex gap-5'><FcGoogle size={25} /> <p>Login With Google</p></button>
+                <button onClick={handlaGooglelogin} className='btn w-full flex gap-5'><FcGoogle size={25} /> <p>Login With Google</p></button>
                   </div>
               <form onSubmit={handleRegister} className="card-body">
               

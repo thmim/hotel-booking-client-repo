@@ -7,6 +7,7 @@ import MainLayout from '../layouts/MainLayout';
 import Home from '../pages/home/Home';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login';
+import Rooms from '../pages/allRooms/Rooms';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
       {
         path:"login",
         Component:Login
+      },
+      {
+        path:"rooms",
+        loader:()=>fetch('http://localhost:5000/hotels'),
+        Component:Rooms
       }
     ]
   },

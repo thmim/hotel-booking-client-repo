@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
 import loginlottie from '../assets/lotties/login.json'
 import Lottie from 'lottie-react';
+import { AuthContext } from '../context/AuthContext/AuthContext';
+import { GoogleAuthProvider } from 'firebase/auth';
 const Login = () => {
+  const {signInUser,googleLogInUser} = use(AuthContext)
+  const handleLogIn = e =>{
+    e.preventDefault();
+    const email = e.target.email.value
+    const password = e.target.password.value
+    signInUser(email,password)
+    .then(result=>{
+          console.log(result.user)
+        })
+        .catch((error) => {
+    console.log(error)
+  });
+  }
+  const provider = new GoogleAuthProvider
+        const handlaGooglelogin = () =>{
+           googleLogInUser(provider)
+           .then(result=>{
+            console.log(result)
+          })
+          .catch(error=>{
+            console.log(error)
+          })
+        }
     return (
         <div className='flex justify-center items-center mt-10 mb-10'> 
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -13,9 +38,9 @@ const Login = () => {
     <h1 className="text-5xl font-bold p-3">Login now!</h1>
     <div className='p-3'>
     
-      <button className='btn w-full flex gap-5'><FcGoogle size={25} /> <p>Login With Google</p></button>
+      <button onClick={handlaGooglelogin} className='btn w-full flex gap-5'><FcGoogle size={25} /> <p>Login With Google</p></button>
       </div>
-      <form className="card-body">
+      <form onSubmit={handleLogIn} className="card-body">
       
         <fieldset className="fieldset">
           <label className="label">Email</label>
@@ -27,7 +52,7 @@ const Login = () => {
           <p>Forgot password?</p>
           {/* {error && <p className='text-red-400'>{error}</p>} */}
           <button type='submit' className="btn btn-neutral mt-4">Login</button>
-          <p className='font-bold text-center pt-4'>Don't Have an account? <Link to="/signup" className='text-red-500'>Signup</Link></p>
+          <p className='font-bold text-center pt-4'>Don't Have an account? <Link to="/register" className='text-red-500'>Register</Link></p>
         </fieldset>
       </form>
       </div>
