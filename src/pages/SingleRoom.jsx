@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const SingleRoom = ({room}) => {
-    const {hotelName,roomImage,description} = room 
+    const {hotelName,roomImage,description,_id} = room 
     return (
+       
         <div className="card bg-base-100 w-96 shadow-sm">
+           <Link to={`/hotels/:${_id}`}>
   <figure>
     <img
+    className='w-96 h-72'
       src={roomImage}
       alt="" />
   </figure>
@@ -16,7 +20,9 @@ const SingleRoom = ({room}) => {
       <button className="btn btn-primary">View Details</button>
     </div>
   </div>
+  </Link>
 </div>
+        
     );
 };
 
