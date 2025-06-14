@@ -33,8 +33,9 @@ const router = createBrowserRouter([
       },
       {
         path:"/hotels/:id",
-        Component:RoomDetails,
-        loader:({params})=>fetch(`http://localhost:5000/hotels/${params.id}`)
+        loader:({params})=>fetch(`http://localhost:5000/hotels/${params.id}`),
+        Component:RoomDetails
+        
       }
     ]
   },

@@ -6,7 +6,7 @@ const SingleRoom = ({room}) => {
     return (
        
         <div className="card bg-base-100 w-96 shadow-sm">
-           <Link to={`/hotels/:${_id}`}>
+           <Link to={`/hotels/${_id}`}>
   <figure>
     <img
     className='w-96 h-72'
