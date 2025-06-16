@@ -12,6 +12,7 @@ import room2 from '../assets/Room-2.jpg'
 import room3 from '../assets/Room-3.jpg'
 import room4 from '../assets/Room-4.jpg'
 import banner from '../assets/room-6878004_1280.jpg'
+import { Link } from 'react-router';
 const Banner = () => {
      return (
     <>
@@ -33,9 +34,9 @@ const Banner = () => {
         <p className="text-lg md:text-xl mb-6">
           From luxury resorts to cozy budget rooms — explore thousands of hotels worldwide. Your next adventure starts here.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+        <Link to="/rooms"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
           Explore Hotels
-        </button>
+        </button></Link>
       </div>
     </div>
   </div>
@@ -58,9 +59,9 @@ const Banner = () => {
         <p className="text-lg md:text-xl mb-6">
           Find the best hotels, handpicked for your perfect stay. Book now with exclusive discounts and flexible options.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+        <Link to="/rooms"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
           Explore Hotels
-        </button>
+        </button></Link>
       </div>
     </div>
   </div>
@@ -82,9 +83,9 @@ const Banner = () => {
         <p className="text-lg md:text-xl mb-6">
           Plan your dream vacation or a quick weekend getaway. Unbeatable deals and seamless booking at Hotella.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+        <Link to="/rooms"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
           Explore Hotels
-        </button>
+        </button></Link>
       </div>
     </div>
   </div>
@@ -106,9 +107,9 @@ const Banner = () => {
         <p className="text-lg md:text-xl mb-6">
           Choose from a wide range of accommodations and enjoy personalized recommendations. Hotella has it all.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+        <Link to="/rooms"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
           Explore Hotels
-        </button>
+        </button></Link>
       </div>
     </div>
   </div>
@@ -130,9 +131,9 @@ const Banner = () => {
         <p className="text-lg md:text-xl mb-6">
           Skip the hassle. Find verified hotels, trusted reviews, and the best prices — all in one place.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
+        <Link to="/rooms"><button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition duration-300">
           Explore Hotels
-        </button>
+        </button></Link>
       </div>
     </div>
   </div>

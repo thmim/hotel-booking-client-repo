@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const SingleRoom = ({room}) => {
-    const {hotelName,roomImage,description,_id} = room 
+    const {type,roomImage,description,_id} = room 
     return (
        
         <div className="card bg-base-100 w-96 shadow-sm">
@@ -14,7 +14,7 @@ const SingleRoom = ({room}) => {
       alt="" />
   </figure>
   <div className="card-body">
-    <h2 className="card-title">{hotelName}</h2>
+    <h2 className="card-title">{type}</h2>
     <p>{description}</p>
     <div className="card-actions justify-end">
       <button className="btn btn-primary">View Details</button>
