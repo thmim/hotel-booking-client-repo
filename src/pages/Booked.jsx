@@ -1,36 +1,138 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { ImCross } from "react-icons/im";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Booked = ({roomsData}) => {
-    console.log(roomsData);
-    const{price} = roomsData
+  const [showModal,setShowModal] = useState(false)
+  const handleGuest =(e)=>{
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const guestInfo = Object.fromEntries(formData.entries)
+      console.log(guestInfo);
+  }
+    // console.log(roomsData);
+    
+    const{price,roomImage,type,availableRooms,roomSize,maxGuests,bed} = roomsData
     return (
         <div>
-            <button className='w-full py-7 font-bold text-4xl text-white bg-cyan-500 btn' onClick={()=>document.getElementById('my_modal_5').showModal()}>Book Now</button>
-<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box flex flex-col justify-center items-center">
-    <h3 className="font-bold text-lg">Room Details</h3>
-    <p>Price/Night: {price}</p>
-    <p className="py-4">Please Fill up this form for booking this room.</p>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <button
+  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition-all duration-300 w-full"
+  onClick={() => setShowModal(true)}
+>
+  Book Now
+</button>
+{showModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4">
+    <div className="bg-white rounded-2xl w-full max-w-4xl p-6 shadow-xl relative overflow-y-auto max-h-[90vh]">
+      
+      {/* Close Button */}
+      <button
+        onClick={() => setShowModal(false)}
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+      >
+        <ImCross />
+      </button>
 
-  <label className="label">Title</label>
-  <input type="text" className="input" placeholder="My awesome page" />
+      {/* Room Info (Dynamic) */}
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <img
+          src={roomImage}
+          alt=""
+          className="w-full h-64 object-cover rounded-xl shadow-md"
+        />
 
-  <label className="label">Slug</label>
-  <input type="text" className="input" placeholder="my-awesome-page" />
+        <div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">{type}</h2>
+          <p className="text-lg text-blue-600 font-semibold mb-3 flex gap-1 items-center"><FaBangladeshiTakaSign /> {price} per night</p>
 
-  <label className="label">Author</label>
-  <input type="text" className="input" placeholder="Name" />
-  <input type="submit" className="btn" value="Confirm Booking" />
-</fieldset>
-     <button className="btn mt-4">Close</button>  
+          <ul className="text-sm text-gray-600 space-y-1">
+            <li><strong>Bed:</strong> {bed}</li>
+            <li><strong>Room Size:</strong> {roomSize}</li>
+            <li><strong>Max Guests:</strong> {maxGuests}</li>
+            <li><strong>Available Rooms:</strong> {availableRooms}</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Booking Form */}
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <input
+            type="text"
+            name='name'
+            placeholder="Your full name"
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Photo Url</label>
+          <input
+            type = "url"
+            name='photo'
+            placeholder="Your Image Link"
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+          <input
+            type="tel"
+            name='phone'
+            placeholder="01XXXXXXXXX"
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
+          <input
+            type="number"
+            name='guest'
+            min="1"
+            max="3"
+            placeholder="e.g., 2"
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
+          <input
+            type="date"
+            name='checkInDate'
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
+          <input
+            type="date"
+            name='checkOutDate'
+            className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+            required
+          />
+        </div>
+
+        <button
+          onSubmit={handleGuest}
+          className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold transition"
+        >
+          Confirm Booking
+        </button>
       </form>
     </div>
   </div>
-</dialog>
+)}
+
         </div>
     );
 };
