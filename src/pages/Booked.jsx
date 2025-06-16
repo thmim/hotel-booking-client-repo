@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { ImCross } from "react-icons/im";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { AuthContext } from '../context/AuthContext/AuthContext';
 const Booked = ({roomsData}) => {
+  const {user} = use(AuthContext)
   const [showModal,setShowModal] = useState(false)
   const handleGuest =(e)=>{
       e.preventDefault();
       const form = e.target;
-      const formData = new FormData(form);
-      const guestInfo = Object.fromEntries(formData.entries)
-      console.log(guestInfo);
+      const name = form.name.value;
+      const photo = form.photo.value;
+      const phone = form.phone.value;
+      const guestNumber = form.guestNumber.value;
+      const checkInDate = form.checkInDate.value;
+      const checkOutDate = form.checkOutDate.value;
+      
+      const guestInfo = {
+           guest:user.email,
+           name,
+           photo,
+           guestNumber,
+           phone,
+           checkInDate,
+           checkOutDate,
+
+      }
   }
     // console.log(roomsData);
     
@@ -93,7 +109,7 @@ const Booked = ({roomsData}) => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
           <input
             type="number"
-            name='guest'
+            name='guestNumber'
             min="1"
             max="3"
             placeholder="e.g., 2"
