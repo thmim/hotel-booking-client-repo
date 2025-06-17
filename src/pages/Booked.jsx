@@ -2,6 +2,8 @@ import React, { use, useState } from 'react';
 import { ImCross } from "react-icons/im";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { AuthContext } from '../context/AuthContext/AuthContext';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 const Booked = ({roomsData}) => {
   const {user} = use(AuthContext)
   const [showModal,setShowModal] = useState(false)
@@ -25,6 +27,22 @@ const Booked = ({roomsData}) => {
            checkOutDate,
 
       }
+      axios.post('http://localhost:5000/visitors',guestInfo)
+      .then(res=>{
+        if(res.data.insertedId){
+          Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your have successfully booked this room",
+  showConfirmButton: false,
+  timer: 1500
+});
+        }
+        console.log(res.data)
+      })
+      .catch(error=>{
+        console.log(error)
+      })
   }
     // console.log(roomsData);
     
@@ -71,7 +89,7 @@ const Booked = ({roomsData}) => {
       </div>
 
       {/* Booking Form */}
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form onSubmit={handleGuest} className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
           <input
@@ -139,7 +157,8 @@ const Booked = ({roomsData}) => {
         </div>
 
         <button
-          onSubmit={handleGuest}
+        
+          type='submit'
           className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold transition"
         >
           Confirm Booking
