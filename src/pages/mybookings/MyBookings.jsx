@@ -10,7 +10,7 @@ const MyBookings = () => {
     return (
         <div>
             <Suspense fallback={'Application in loading.....'}>
-                <MyBookingsList myBookingPromise={myBookingPromise(user.email)}></MyBookingsList>
+                <MyBookingsList myBookingPromise={myBookingPromise(user?.email)}></MyBookingsList>
             </Suspense>
         </div>
     );
