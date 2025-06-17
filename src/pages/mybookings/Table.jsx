@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Update from '../Update';
 
 const Table = ({booking,index}) => {
-      const [showModal,setShowModal] = useState(false)
-     
+      
+    const [showModal,setShowmodal] = useState(false)
     const {name,photo,phone,checkInDate,checkOutDate} = booking
     
     return (
@@ -36,8 +37,9 @@ const Table = ({booking,index}) => {
           <button className="btn btn-ghost btn-xs">details</button>
         </th> */}
         <td className="px-4 py-3 text-center space-x-1 space-y-1">
-              <button  onClick={() => setShowModal(true)} className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">Update Date</button>
-              {showModal && (<Update></Update>)}
+              <button  onClick={() => setShowmodal(true)} className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">Update Date</button>
+              {showModal && (<Update setShowmodal={setShowmodal}></Update>)}
+              {/* <Update></Update> */}
               <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs">Cancel Booking</button>
               <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs">Review</button>
             </td>
