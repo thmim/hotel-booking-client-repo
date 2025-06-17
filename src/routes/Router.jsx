@@ -10,6 +10,8 @@ import Login from '../pages/Login';
 import Rooms from '../pages/allRooms/Rooms';
 import RoomDetails from '../pages/RoomDetails';
 import MyBookings from '../pages/mybookings/MyBookings';
+import Update from '../pages/Update';
+import Table from '../pages/mybookings/Table';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +34,11 @@ const router = createBrowserRouter([
         loader:()=>fetch('http://localhost:5000/hotels'),
         Component:Rooms
       },
+      // {
+      //   path:"/update/:id",
+      //   loader:({params})=>fetch(`http://localhost:5000/visitors/${params.id}`),
+      //   Component:Update
+      // },
       {
         path:"bookings",
         Component:MyBookings

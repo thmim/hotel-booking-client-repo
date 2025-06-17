@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import Update from '../Update';
+// import { Link, useLoaderData } from 'react-router';
 
 const Table = ({booking,index}) => {
-      
+    // const data = useLoaderData()
+    //             console.log(data)  
     const [showModal,setShowmodal] = useState(false)
-    const {name,photo,phone,checkInDate,checkOutDate} = booking
+    const {name,photo,phone,checkInDate,checkOutDate,_id} = booking
     
     return (
         <tr>
@@ -38,8 +40,8 @@ const Table = ({booking,index}) => {
         </th> */}
         <td className="px-4 py-3 text-center space-x-1 space-y-1">
               <button  onClick={() => setShowmodal(true)} className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">Update Date</button>
-              {showModal && (<Update setShowmodal={setShowmodal}></Update>)}
-              {/* <Update></Update> */}
+              {showModal && (<Update setShowmodal={setShowmodal} _id={_id}></Update>)}
+              
               <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs">Cancel Booking</button>
               <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs">Review</button>
             </td>
