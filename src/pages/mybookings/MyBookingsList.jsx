@@ -1,8 +1,9 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import Table from './Table';
 
 const MyBookingsList = ({myBookingPromise}) => {
-    const bookings = use(myBookingPromise)
+    const initialBookings = use(myBookingPromise)
+    const [bookings,setBookings] = useState([...initialBookings])
     return (
         <div className="max-w-7xl mx-auto m-10 p-12">
           <h1 className="text-3xl font-bold mb-6 text-center text-emerald-500">My Bookings List</h1>
@@ -22,7 +23,12 @@ const MyBookingsList = ({myBookingPromise}) => {
     <tbody className="divide-y divide-gray-200">
       
       {
-        bookings.map((booking,index)=><Table key={booking._id} booking={booking} index={index}></Table>)
+        bookings.map((booking,index)=><Table 
+        key={booking._id} 
+        booking={booking}
+        bookings={bookings}
+        setBookings={setBookings}
+         index={index}></Table>)
       }
      
     </tbody>
