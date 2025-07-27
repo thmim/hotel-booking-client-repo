@@ -16,7 +16,7 @@ const MyBookingsList = ({myBookingPromise}) => {
         <th className="px-4 py-3 text-left">Name</th>
         <th className="px-4 py-3 text-left">Check In</th>
         <th className="px-4 py-3 text-left">Check Out</th>
-        {/* <th className="px-4 py-3 text-left">Price</th> */}
+        <th className="px-4 py-3 text-left">Price</th>
         <th className="px-4 py-3 text-center">Actions</th>
       </tr>
     </thead>
@@ -29,6 +29,7 @@ const MyBookingsList = ({myBookingPromise}) => {
         bookingId={booking.roomId}
         booking={booking}
         bookings={bookings}
+        
         setBookings={setBookings}
          index={index}></Table>
         )

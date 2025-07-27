@@ -21,7 +21,7 @@
 //        const updateDate = {
 //            checkIn,checkOut
 //        }
-    
+
 //     }
 //     if (!data) {
 //     return (
@@ -30,43 +30,43 @@
 //       </div>
 //     );
 //   }
-   
+
 
 //     return (
 
 //         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4">
 //             <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl relative">
 
-                {/* Close Button */}
-                // <button
-                //     onClick={() => setShowmodal(false)}
-                //     className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
-                // >
-                //     <ImCross />
-                // </button>
+{/* Close Button */ }
+// <button
+//     onClick={() => setShowmodal(false)}
+//     className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+// >
+//     <ImCross />
+// </button>
 
-                {/* Modal Heading */}
-                // <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Update Your Stay Dates</h2>
+{/* Modal Heading */ }
+// <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Update Your Stay Dates</h2>
 
-                {/* Date Update Form */}
-                // <form onSubmit={handleUpdate} className="space-y-4">
-                //     <div>
-                //         <label className="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
-                //         <input
-                //             type="date"
-                //             name='checkIn'
-                            // defaultValue={checkInDate}
-                    //         className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
-                    //         required
-                    //     />
-                    // </div>
+{/* Date Update Form */ }
+// <form onSubmit={handleUpdate} className="space-y-4">
+//     <div>
+//         <label className="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
+//         <input
+//             type="date"
+//             name='checkIn'
+// defaultValue={checkInDate}
+//         className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
+//         required
+//     />
+// </div>
 
-                    // <div>
-                    //     <label className="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
-                    //     <input
-                    //         type="date"
-                    //         name='checkOut'
-                            // defaultValue={checkOutDate}
+// <div>
+//     <label className="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
+//     <input
+//         type="date"
+//         name='checkOut'
+// defaultValue={checkOutDate}
 //                             className="w-full border border-gray-300 p-3 rounded-md focus:outline-blue-500"
 //                             required
 //                         />
@@ -90,6 +90,7 @@
 // export default Update;
 import React, { useEffect, useState } from 'react';
 import { ImCross } from 'react-icons/im';
+import Swal from 'sweetalert2';
 
 const Update = ({ setShowmodal, _id }) => {
   const [data, setData] = useState(null);
@@ -98,12 +99,12 @@ const Update = ({ setShowmodal, _id }) => {
     fetch(`http://localhost:5000/visitors/${_id}`)
       .then((res) => res.json())
       .then((result) => setData(result))
-      .catch(error=>{
+      .catch(error => {
         console.log(error)
       });
   }, [_id]);
 
-  const handleUpdate =  (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     const checkIn = e.target.checkIn.value;
     const checkOut = e.target.checkOut.value;
@@ -118,26 +119,29 @@ const Update = ({ setShowmodal, _id }) => {
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify(updateDate),
     // });
-    fetch(`http://localhost:5000/visitors/${_id}`,{
-        method:'PUT',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(updateDate)
+    fetch(`http://localhost:5000/visitors/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateDate)
     })
-    .then(res=>res.json())
-    .then(data=>{
-       if (data.modifiedCount > 0) {
-      alert('Date updated successfully!');
-      setShowmodal(false);
-    }
-    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your update date has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setShowmodal(false);
+          
+        }
+      })
 
-    // const result = await res.json();
-    // if (result.modifiedCount > 0) {
-    //   alert('Date updated successfully!');
-    //   setShowmodal(false);
-    // }
+    
   };
 
   if (!data) {

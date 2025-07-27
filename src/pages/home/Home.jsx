@@ -6,10 +6,14 @@ import TopRooms from '../allRooms/TopRooms';
 import WhyUs from '../WhyUs';
 import HowItWorks from '../HowItWorks';
 import PromotionalModal from '../PromotionalModal';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Hotel Booking |Home</title>
+            </Helmet>
             <Banner></Banner>
             <TopRooms></TopRooms>
             <Map></Map>

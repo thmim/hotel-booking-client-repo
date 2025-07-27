@@ -3,14 +3,13 @@ import { useState } from 'react';
 import Update from '../Update';
 import Swal from 'sweetalert2';
 import Review from '../reviews/Review';
-// import { Link, useLoaderData } from 'react-router';
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const Table = ({booking,index,bookings,setBookings,bookingId}) => {
-    // const data = useLoaderData()
-    //             console.log(data)  
+    
     const [showModal,setShowmodal] = useState(false)
     const [showReviewModal, setShowReviewModal] = useState(false);
-    const {name,photo,phone,checkInDate,checkOutDate,_id} = booking
+    const {name,photo,phone,checkInDate,checkOutDate,_id,price} = booking
     const handleBooking = () =>{
          const today = new Date();
     const checkIn = new Date(checkInDate);
@@ -81,12 +80,14 @@ const Table = ({booking,index,bookings,setBookings,bookingId}) => {
           {checkInDate}
         </td>
         <td className="px-4 py-3">{checkOutDate}</td>
+        <td className="px-4 py-3 flex gap-1 items-center">{price || 'N/A'}<FaBangladeshiTakaSign /></td>
         {/* <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th> */}
         <td className="px-4 py-3 text-center space-x-1 space-y-1">
               <button  onClick={() => setShowmodal(true)} className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">Update Date</button>
-              {showModal && (<Update setShowmodal={setShowmodal} _id={_id}></Update>)}
+              {showModal && (<Update
+               setShowmodal={setShowmodal} _id={_id}></Update>)}
               
               <button onClick={handleBooking} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs">Cancel Booking</button>
               <button onClick={() => setShowReviewModal(true)} className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs">Review</button>

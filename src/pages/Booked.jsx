@@ -29,6 +29,7 @@ const Booked = ({roomsData}) => {
            checkInDate,
            checkOutDate,
            type,
+           price,
            roomId:_id
 
       }

@@ -6,6 +6,7 @@ import Lottie from 'lottie-react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 const Register = () => {
   const {createUser,googleLogInUser,setUser} = use(AuthContext)
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const Register = () => {
         }
     return (
         <div className='flex justify-center items-center mt-10 mb-10'> 
+        <Helmet>
+          <title>Hotel Booking|Register</title>
+        </Helmet>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="flex justify-center mt-5">
     <Lottie style={{width:'200px'}} animationData={registerlottie} loop={true} />
