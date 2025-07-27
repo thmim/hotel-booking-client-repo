@@ -2,8 +2,11 @@ import axios from 'axios';
 import React, { use, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
+import { useNavigate } from 'react-router';
 
 const Review = ({ setShowReviewModal, _id }) => {
+  console.log(_id)
+  const navigate = useNavigate();
     const {user} = use(AuthContext)
     const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
@@ -23,11 +26,13 @@ const Review = ({ setShowReviewModal, _id }) => {
           Swal.fire({
   position: "top-end",
   icon: "success",
-  title: "Your have successfully booked this room",
+  title: "Your review successfully submitted",
   showConfirmButton: false,
   timer: 1500
 });
         }
+        setShowReviewModal(false)
+        navigate('/bookings')
         console.log(res.data)
       })
       .catch(error=>{
@@ -44,7 +49,7 @@ const Review = ({ setShowReviewModal, _id }) => {
             <input
               type="text"
               readOnly 
-              value={user.displayName}
+              value={user.displayName || 'N/A'}
               name='name'
               className="w-full border px-3 py-2 rounded mt-1"
             />

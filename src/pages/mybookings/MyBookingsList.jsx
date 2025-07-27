@@ -23,12 +23,15 @@ const MyBookingsList = ({myBookingPromise}) => {
     <tbody className="divide-y divide-gray-200">
       
       {
-        bookings.map((booking,index)=><Table 
-        key={booking._id} 
+        bookings.map((booking,index)=>
+        <Table 
+        key={booking.roomId} 
+        bookingId={booking.roomId}
         booking={booking}
         bookings={bookings}
         setBookings={setBookings}
-         index={index}></Table>)
+         index={index}></Table>
+        )
       }
      
     </tbody>

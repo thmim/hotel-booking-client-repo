@@ -4,7 +4,10 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { AuthContext } from '../context/AuthContext/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 const Booked = ({roomsData}) => {
+  const navigate = useNavigate();
+ 
   const {user} = use(AuthContext)
   const [showModal,setShowModal] = useState(false)
   const handleGuest =(e)=>{
@@ -25,6 +28,8 @@ const Booked = ({roomsData}) => {
            phone,
            checkInDate,
            checkOutDate,
+           type,
+           roomId:_id
 
       }
       axios.post('http://localhost:5000/visitors',guestInfo)
@@ -38,15 +43,25 @@ const Booked = ({roomsData}) => {
   timer: 1500
 });
         }
+        navigate('/bookings')
         console.log(res.data)
       })
-      .catch(error=>{
-        console.log(error)
-      })
+      .catch(error => {
+  if (error.response && error.response.status === 409) {
+    Swal.fire({
+      icon: "error",
+      title: "Room Already Booked",
+      text: "Sorry, this room has already booked for your selected date.",
+    });
+  } else {
+    console.error(error);
+  }
+})
   }
     // console.log(roomsData);
     
-    const{price,roomImage,type,availableRooms,roomSize,maxGuests,bed} = roomsData
+    const{price,roomImage,type,availableRooms,roomSize,maxGuests,bed,_id} = roomsData
+    console.log(_id)
     return (
         <div>
           <button

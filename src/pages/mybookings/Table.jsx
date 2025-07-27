@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import Review from '../reviews/Review';
 // import { Link, useLoaderData } from 'react-router';
 
-const Table = ({booking,index,bookings,setBookings}) => {
+const Table = ({booking,index,bookings,setBookings,bookingId}) => {
     // const data = useLoaderData()
     //             console.log(data)  
     const [showModal,setShowmodal] = useState(false)
@@ -91,7 +91,7 @@ const Table = ({booking,index,bookings,setBookings}) => {
               <button onClick={handleBooking} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs">Cancel Booking</button>
               <button onClick={() => setShowReviewModal(true)} className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs">Review</button>
               {showReviewModal && (
-  <Review setShowReviewModal={setShowReviewModal} _id={_id} />
+  <Review setShowReviewModal={setShowReviewModal} _id={bookingId} />
 )}
             </td>
       </tr>

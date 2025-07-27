@@ -1,22 +1,39 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import loginlottie from '../assets/lotties/login.json'
 import Lottie from 'lottie-react';
 import { AuthContext } from '../context/AuthContext/AuthContext';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const Login = () => {
   const {signInUser,googleLogInUser} = use(AuthContext)
+  const [error,setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogIn = e =>{
     e.preventDefault();
     const email = e.target.email.value
     const password = e.target.password.value
     signInUser(email,password)
-    .then(result=>{
-          console.log(result.user)
-        })
+    .then((result)=>{
+      Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your are successfully loged in",
+  showConfirmButton: false,
+  timer: 2000
+});
+    
+       const user = result.user;
+       console.log(user)
+       navigate(`${location.state? location.state :"/"}`)
+    })
         .catch((error) => {
-    console.log(error)
+    const errorCode = error.code;
+    // const errorMessage = error.message;
+    setError(errorCode);
+    // alert(errorCode,errorMessage)
   });
   }
   const provider = new GoogleAuthProvider
@@ -24,6 +41,7 @@ const Login = () => {
            googleLogInUser(provider)
            .then(result=>{
             console.log(result)
+            navigate(`${location.state? location.state :"/"}`)
           })
           .catch(error=>{
             console.log(error)
@@ -50,7 +68,7 @@ const Login = () => {
     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
     title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"/>
           <p>Forgot password?</p>
-          {/* {error && <p className='text-red-400'>{error}</p>} */}
+          {error && <p className='text-red-400'>{error}</p>}
           <button type='submit' className="btn btn-neutral mt-4">Login</button>
           <p className='font-bold text-center pt-4'>Don't Have an account? <Link to="/register" className='text-red-500'>Register</Link></p>
         </fieldset>

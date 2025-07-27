@@ -12,10 +12,13 @@ import RoomDetails from '../pages/RoomDetails';
 import MyBookings from '../pages/mybookings/MyBookings';
 import Update from '../pages/Update';
 import Table from '../pages/mybookings/Table';
+import Error from '../pages/Error';
+import PrivateRoute from '../context/PrivateRoute';
 const router = createBrowserRouter([
   {
     path: "/",
     Component:MainLayout,
+    errorElement:<Error></Error>,
     children:[
       {
         index:true,
@@ -41,7 +44,10 @@ const router = createBrowserRouter([
       // },
       {
         path:"bookings",
-        Component:MyBookings
+        // Component:MyBookings
+        element:<PrivateRoute>
+          <MyBookings></MyBookings>
+        </PrivateRoute>
       },
       {
         path:"/hotels/:id",

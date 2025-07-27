@@ -1,12 +1,14 @@
 import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import registerlottie from '../../assets/lotties/register.json'
 import Lottie from 'lottie-react';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const Register = () => {
   const {createUser,googleLogInUser,setUser} = use(AuthContext)
+  const navigate = useNavigate();
   const handleRegister = e =>{
     e.preventDefault();
     const name = e.target.name.value;
@@ -16,6 +18,13 @@ const Register = () => {
         console.log(name,email)
         createUser(email,password)
         .then(result=>{
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Welcome to My Website",
+            showConfirmButton: false,
+            timer: 2000
+          });
           const user = result.user;
           updateProfile(user, {
                 displayName: name,
@@ -23,6 +32,7 @@ const Register = () => {
             }).then(() => {
                 setUser({ ...user, displayName: name, photoURL: photo });
                 console.log("User created & profile updated:", user);
+                navigate("/")
                 
             });
         })
