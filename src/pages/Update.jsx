@@ -110,15 +110,10 @@ const Update = ({ setShowmodal, _id }) => {
     const checkOut = e.target.checkOut.value;
 
     const updateDate = {
-      checkInDate: checkIn,
-      checkOutDate: checkOut,
+      checkInDate: new Date(checkIn + 'T00:00:00Z'),
+  checkOutDate: new Date(checkOut + 'T00:00:00Z')
     }
 
-    // const res = await fetch(`http://localhost:5000/visitors/${_id}`, {
-    //   method: 'PUT',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(updateDate),
-    // });
     fetch(`http://localhost:5000/visitors/${_id}`, {
       method: 'PUT',
       headers: {

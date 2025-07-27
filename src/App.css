@@ -2,6 +2,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+a.active{
+    @apply bg-amber-300
+}
 
 *{
   font-family: "Roboto", sans-serif;
