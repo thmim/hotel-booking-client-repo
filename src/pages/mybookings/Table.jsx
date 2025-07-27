@@ -35,7 +35,7 @@ const Table = ({booking,index,bookings,setBookings,bookingId}) => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    fetch(`http://localhost:5000/visitors/${_id}`,{
+    fetch(`https://assignment-11-hotel-booking-server.vercel.app/visitors/${_id}`,{
         method:"DELETE"
        })
        .then(res=>res.json())

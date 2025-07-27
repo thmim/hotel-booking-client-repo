@@ -31,9 +31,9 @@ const Login = () => {
     })
         .catch((error) => {
     const errorCode = error.code;
-    // const errorMessage = error.message;
+    
     setError(errorCode);
-    // alert(errorCode,errorMessage)
+   
   });
   }
   const provider = new GoogleAuthProvider

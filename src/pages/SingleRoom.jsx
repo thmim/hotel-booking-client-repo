@@ -4,32 +4,14 @@ import { Link } from 'react-router';
 const SingleRoom = ({room}) => {
     const {type,roomImage,description,_id,price} = room 
     return (
-       
-//         <div className="card bg-base-100 w-96 shadow-sm">
-//            <Link to={`/hotels/${_id}`}>
-//   <figure>
-//     <img
-//     className='w-96 h-72'
-//       src={roomImage}
-//       alt="" />
-//   </figure>
-//   <div className="card-body">
-//     <h2 className="card-title">{type}</h2>
-//     <p>{description}</p>
-//     <div className="card-actions justify-end">
-//       <button className="btn btn-primary">View Details</button>
-//     </div>
-//   </div>
-//   </Link>
-// </div>
 
 <div
             className="card card-compact bg-base-100 shadow-xl overflow-hidden
                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]
-                       flex flex-col h-full" // Ensure cards are equal height in a grid
+                       flex flex-col h-full" 
         >
-            <Link to={`/hotels/${_id}`} className="block h-full"> {/* Make the entire card clickable */}
-                <figure className="relative h-56 w-full"> {/* Consistent image height */}
+            <Link to={`/hotels/${_id}`} className="block h-full"> 
+                <figure className="relative h-56 w-full"> 
                     <img
                         src={roomImage || 'https://via.placeholder.com/600x400.png?text=Room+Image'}
                         alt={type}
@@ -41,16 +23,16 @@ const SingleRoom = ({room}) => {
                     </div>
                 </figure>
 
-                <div className="card-body p-6 flex flex-col flex-grow"> {/* flex-grow to make content fill space */}
+                <div className="card-body p-6 flex flex-col flex-grow"> 
                     <h2 className="card-title text-2xl font-bold text-neutral mb-2">
                         {type}
                     </h2>
 
-                    <p className="text-base-content text-opacity-80 leading-relaxed mb-4 line-clamp-3"> {/* Truncate description */}
+                    <p className="text-base-content text-opacity-80 leading-relaxed mb-4 line-clamp-3"> 
                         {description}
                     </p>
 
-                    <div className="card-actions justify-end mt-auto"> {/* mt-auto pushes button to bottom */}
+                    <div className="card-actions justify-end mt-auto"> 
                         <button className="btn btn-primary btn-block text-lg">
                             View Details
                         </button>

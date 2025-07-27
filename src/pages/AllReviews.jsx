@@ -8,7 +8,7 @@ const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-  axios.get('http://localhost:5000/rooms-reviews')
+  axios.get('https://assignment-11-hotel-booking-server.vercel.app/rooms-reviews')
     .then(response => {
       setReviews(response.data);
     })

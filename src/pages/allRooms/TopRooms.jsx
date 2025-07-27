@@ -7,7 +7,7 @@ const TopRooms = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/toprated')
+    axios.get('https://assignment-11-hotel-booking-server.vercel.app/toprated')
       .then(res =>
         setHotels(res.data)
         
@@ -17,24 +17,7 @@ const TopRooms = () => {
   }, []);
 
   return (
-    // <div className="p-6 bg-gray-100 min-h-screen">
-    //   <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Top Rated Rooms</h2>
-
-    //   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    //     {hotels.map(hotel => (
-    //       <div key={hotel._id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-    //         <img src={hotel.roomImage} alt={hotel.type} className="w-full h-48 object-cover" />
-    //         <div className="p-4">
-    //           <h3 className="text-xl font-semibold text-gray-800">{hotel.type}</h3>
-    //           <p className="text-gray-600 mt-1">৳{hotel.pricePerNight} / night</p>
-    //           <div className="mt-2 text-yellow-500 font-medium">
-    //             ⭐ Rating: {hotel.rating}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
+    
      <section className="py-12 bg-gray-50">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12 relative">
@@ -75,9 +58,7 @@ const TopRooms = () => {
                                 <div className="mt-auto pt-4 border-t border-gray-100">
                                     <button
                                         onClick={() =>
-                                          navigate(`/hotels/${room._id}`)
-                                          //  alert(`Booking ${room.type} (ID: ${room._id})`)
-                                          } // Replace with actual booking logic (e.g., navigate to booking page)
+                                          navigate(`/hotels/${room._id}`) } 
                                         className="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300"
                                     >
                                         Book Now
