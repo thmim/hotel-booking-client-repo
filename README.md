@@ -44,3 +44,23 @@ The main purpose of this project is to provide a smooth and intuitive hotel book
 - `Dotenv` – environment variable management
 - `Firebase Admin SDK` – secure token verification
 
+🏨 Hotel Booking Website – How to Use
+1️⃣ Sign Up / Log In
+Create an account or log in with your credentials to start booking.
+
+2️⃣ Search for Hotels
+Browse available hotels or search by location, date, or room type.
+
+3️⃣ View Hotel Details
+Click on a hotel to see its description, amenities, images, and pricing.
+
+4️⃣ Book a Room
+Select your desired room, choose check-in/check-out dates, and click Book Now.
+
+Confirm your booking details and proceed to payment (if available).
+
+5️⃣ Manage Your Bookings
+Go to My Bookings to view, update, or cancel your reservations.
+
+✅ You’re all set to enjoy a smooth hotel booking experience!
+
