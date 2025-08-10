@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/paymentHistory",
-        Component:PaymentHistory
+        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       }
     ]
   },

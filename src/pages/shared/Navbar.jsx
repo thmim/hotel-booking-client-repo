@@ -49,10 +49,16 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-blue-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               <li className='font-bold'><NavLink to="/">Home</NavLink></li>
               <li className='font-bold'><NavLink to="/rooms">See Rooms</NavLink></li>
-              <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
+              
               <li className='font-bold'><NavLink to="/about">About Us</NavLink></li>
               <li className='font-bold'><NavLink to="/contact">Contact Us</NavLink></li>
-              <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
+              {
+                user && <div>
+                  <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
+               <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
+                </div>
+              }
+             
             </ul>
           </div>
           <div className='flex items-center gap-1'>
@@ -65,10 +71,14 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <li className='font-bold'><NavLink to="/">Home</NavLink></li>
             <li className='font-bold'><NavLink to="/rooms">See Rooms</NavLink></li>
-            <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
             <li className='font-bold'><NavLink to="/about">About Us</NavLink></li>
             <li className='font-bold'><NavLink to="/contact">Contact Us</NavLink></li>
-            <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
+            {
+                user && <div>
+                  <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
+               <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
+                </div>
+              }
           </ul>
         </div>
         <div className="navbar-end gap-2">

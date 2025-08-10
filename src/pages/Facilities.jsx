@@ -40,8 +40,8 @@ const facilitiesData = [
 
 const Facilities = () => {
   return (
-    <div className="bg-gray-100 py-16 px-4">
-      <div className="container mx-auto">
+    <div className="py-16 px-4">
+      <div className="w-11/12 mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight mb-4">
