@@ -25,8 +25,8 @@ const WhyUs = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-16 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="py-16 md:px-8 w-11/12 mx-auto">
+      <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Us?</h2>
         <p className="text-gray-600 mb-10 max-w-xl mx-auto">
           Discover the best hotel booking experience with features crafted to make your journey smooth and memorable.

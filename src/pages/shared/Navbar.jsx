@@ -53,7 +53,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className='flex items-center gap-1'>
-            <img className='w-12 h-12' src={logo} alt="" />
+            <img className='w-10 h-10 rounded-xl' src={logo} alt="" />
             <h2 className="text-3xl font-bold">Hotella</h2>
           </div>
 
