@@ -7,7 +7,7 @@ const Update = ({ setShowmodal, _id }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://assignment-11-hotel-booking-server.vercel.app/visitors/${_id}`)
+    fetch(`http://localhost:5000/visitors/${_id}`)
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch(error => {

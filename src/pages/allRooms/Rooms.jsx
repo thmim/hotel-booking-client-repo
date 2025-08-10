@@ -18,8 +18,8 @@ console.log("min:", minPrice, "max:", maxPrice);
       setRoomsData(loadedRooms);
       return;
     }
-
-    axios.get(`https://assignment-11-hotel-booking-server.vercel.app/hotels?min=${min}&max=${max}`)
+// https://assignment-11-hotel-booking-server.vercel.app
+    axios.get(`http://localhost:5000/hotels?min=${min}&max=${max}`)
   .then(response => {
     setRoomsData(response.data);
   })
@@ -29,7 +29,7 @@ console.log("min:", minPrice, "max:", maxPrice);
   };
 
   return (
-    <div className="w-11/12 mx-auto py-8">
+    <div className="w-11/12 mx-auto py-8 pt-28">
       <h2 className="text-4xl font-bold text-center mb-8">All The Beautiful Rooms Are Here</h2>
 
       {/* Filter Form */}
@@ -57,7 +57,7 @@ console.log("min:", minPrice, "max:", maxPrice);
       </form>
 
       {/* Room Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-7">
         {roomsData.length > 0 ? (
           roomsData.map((room) => <SingleRoom key={room._id} room={room} />)
         ) : (

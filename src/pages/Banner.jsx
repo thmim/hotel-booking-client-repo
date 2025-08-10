@@ -16,10 +16,11 @@ import { Link } from 'react-router';
 const Banner = () => {
      return (
     <>
+    
       <Swiper navigation={true} pagination={true} autoplay={true} modules={[Navigation,Pagination,Autoplay]} className="mySwiper">
         <SwiperSlide>
           <div
-    className="relative bg-cover bg-center h-[500px]"
+    className="relative bg-cover bg-center h-screen"
     style={{
       backgroundImage: `url(${banner})`,
     }}
@@ -44,7 +45,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-    className="relative bg-cover bg-center h-[500px]"
+    className="relative bg-cover bg-center h-screen"
     style={{
       backgroundImage: `url(${room1})`,
     }}
@@ -68,7 +69,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
          <div
-    className="relative bg-cover bg-center h-[500px]"
+    className="relative bg-cover bg-center h-screen"
     style={{
       backgroundImage: `url(${room2})`,
     }}
@@ -92,7 +93,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
          <div
-    className="relative bg-cover bg-center h-[500px]"
+    className="relative bg-cover bg-center h-screen"
     style={{
       backgroundImage: `url(${room3})`,
     }}
@@ -116,7 +117,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
          <div
-    className="relative bg-cover bg-center h-[500px]"
+    className="relative bg-cover bg-center h-screen"
     style={{
       backgroundImage: `url(${room4})`,
     }}
@@ -141,6 +142,7 @@ const Banner = () => {
         </SwiperSlide>
         
       </Swiper>
+      
     </>
   );
 };

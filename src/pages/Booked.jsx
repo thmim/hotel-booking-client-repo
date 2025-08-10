@@ -33,7 +33,7 @@ const Booked = ({roomsData}) => {
            roomId:_id
 
       }
-      axios.post('https://assignment-11-hotel-booking-server.vercel.app/visitors',guestInfo)
+      axios.post('http://localhost:5000/visitors',guestInfo)
       .then(res=>{
         if(res.data.insertedId){
           Swal.fire({

@@ -3,14 +3,14 @@ import MyBookingsList from './MyBookingsList';
 import { AuthContext } from '../../context/AuthContext/AuthContext';
 
 const myBookingPromise = async(email) =>{
-    return await fetch(`https://assignment-11-hotel-booking-server.vercel.app/visitors?email=${email}`)
+    return await fetch(`http://localhost:5000/visitors?email=${email}`)
     .then(res=>res.json())
 }
 const MyBookings = () => {
     
     const {user}=use(AuthContext)
     return (
-        <div>
+        <div className='pt-14'>
             <Suspense fallback={'Application in loading.....'}>
                 {
                     user && <MyBookingsList myBookingPromise={myBookingPromise(user?.email)}></MyBookingsList>
