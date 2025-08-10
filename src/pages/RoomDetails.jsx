@@ -28,7 +28,7 @@ const RoomDetails = () => {
   }, [_id]);
   return (
 
-    <div className="w-11/12 md:w-10/12 mx-auto py-8 flex flex-col lg:flex-row gap-10">
+    <div className="w-11/12 md:w-10/12 mx-auto pt-32 flex flex-col lg:flex-row gap-10">
       {/* Left Section: Room Info */}
       <div className="lg:w-2/3 space-y-6">
         <h2 className="text-4xl sm:text-5xl font-bold text-indigo-900">{type}</h2>

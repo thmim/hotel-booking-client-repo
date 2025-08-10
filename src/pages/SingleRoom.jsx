@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 const SingleRoom = ({ room }) => {
-    const { type, roomImage, description, _id, price } = room
+    const { type, roomImage, description, _id, price,rating } = room
     return (
 
         // <div
@@ -80,7 +80,10 @@ const SingleRoom = ({ room }) => {
           <h2 className="card-title text-2xl font-bold text-neutral mb-2">
             {type}
           </h2>
-
+            <div className="flex items-center text-yellow-500 mb-4">
+                                    <svg className="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                                    <span className="font-bold text-lg">{rating || 'N/A'}</span>
+                                </div>
           <p className="text-base-content text-opacity-80 leading-relaxed mb-4 line-clamp-3">
             {description}
           </p>
