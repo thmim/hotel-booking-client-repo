@@ -50,6 +50,9 @@ const Navbar = () => {
               <li className='font-bold'><NavLink to="/">Home</NavLink></li>
               <li className='font-bold'><NavLink to="/rooms">See Rooms</NavLink></li>
               <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
+              <li className='font-bold'><NavLink to="/about">About Us</NavLink></li>
+              <li className='font-bold'><NavLink to="/contact">Contact Us</NavLink></li>
+              <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
             </ul>
           </div>
           <div className='flex items-center gap-1'>
@@ -63,6 +66,9 @@ const Navbar = () => {
             <li className='font-bold'><NavLink to="/">Home</NavLink></li>
             <li className='font-bold'><NavLink to="/rooms">See Rooms</NavLink></li>
             <li className='font-bold'><NavLink to="/bookings">My Bookings</NavLink></li>
+            <li className='font-bold'><NavLink to="/about">About Us</NavLink></li>
+            <li className='font-bold'><NavLink to="/contact">Contact Us</NavLink></li>
+            <li className='font-bold'><NavLink to="/paymentHistory">Payment History</NavLink></li>
           </ul>
         </div>
         <div className="navbar-end gap-2">

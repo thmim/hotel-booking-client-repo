@@ -15,6 +15,9 @@ import Table from '../pages/mybookings/Table';
 import Error from '../pages/Error';
 import PrivateRoute from '../context/PrivateRoute';
 import Payment from '../pages/payment/Payment';
+import AboutUs from '../pages/AboutUs';
+import ContactUs from '../pages/ContactUs';
+import PaymentHistory from '../pages/PaymentHistory';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +27,14 @@ const router = createBrowserRouter([
       {
         index:true,
         Component:Home
+      },
+      {
+        path:"about",
+        Component:AboutUs
+      },
+      {
+        path:"contact",
+        Component:ContactUs
       },
       {
         path:"register",
@@ -55,6 +66,10 @@ const router = createBrowserRouter([
       {
         path:"payment/:id",
         Component:Payment
+      },
+      {
+        path:"/paymentHistory",
+        Component:PaymentHistory
       }
     ]
   },

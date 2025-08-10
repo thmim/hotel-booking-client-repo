@@ -111,7 +111,7 @@ const TopRooms = () => {
     };
 
     return (
-        <section className="py-12 bg-gray-50 w-11/12 mx-auto">
+        <section className="py-1 w-11/12 mx-auto">
             <div className="container mx-auto">
                 <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-12 relative">
                     <span className="relative z-10">Our Top-Rated Rooms</span>
