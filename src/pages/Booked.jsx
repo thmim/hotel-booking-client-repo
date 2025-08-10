@@ -59,15 +59,17 @@ const Booked = ({ roomsData }) => {
     axios.post('http://localhost:5000/visitors', guestInfo)
       .then(res => {
         if (res.data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your have successfully booked this room",
-            showConfirmButton: false,
-            timer: 1500
-          });
+          // Swal.fire({
+          //   position: "top-end",
+          //   icon: "success",
+          //   title: "Your have successfully booked this room",
+          //   showConfirmButton: false,
+          //   timer: 1500
+          // });
+          navigate(`/payment/${_id}`);
+          
         }
-        navigate('/bookings')
+        
         console.log(res.data)
       })
       .catch(error => {
@@ -82,7 +84,12 @@ const Booked = ({ roomsData }) => {
         }
       })
   }
-  // console.log(roomsData);
+  
+  // const handlePay = (id) =>{
+  //   console.log(id);
+  //   navigate(`/payment/${id}`)
+    
+  // }
 
   const { price, roomImage, type, availableRooms, roomSize, maxGuests, bed, _id } = roomsData
   console.log(_id)
@@ -200,9 +207,10 @@ const Booked = ({ roomsData }) => {
               <button
 
                 type='submit'
+                // onClick={()=>handlePay(_id)}
                 className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold transition"
               >
-                Confirm Booking {price}
+                Confirm Booking
               </button>
             </form>
           </div>

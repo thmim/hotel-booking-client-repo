@@ -14,6 +14,7 @@ import Update from '../pages/Update';
 import Table from '../pages/mybookings/Table';
 import Error from '../pages/Error';
 import PrivateRoute from '../context/PrivateRoute';
+import Payment from '../pages/payment/Payment';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`http://localhost:5000/hotels/${params.id}`),
         element:<PrivateRoute><RoomDetails></RoomDetails></PrivateRoute>
         
+      },
+      {
+        path:"payment/:id",
+        Component:Payment
       }
     ]
   },

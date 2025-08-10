@@ -10,6 +10,7 @@ const Table = ({booking,index,bookings,setBookings,bookingId}) => {
     const [showModal,setShowmodal] = useState(false)
     const [showReviewModal, setShowReviewModal] = useState(false);
     const {name,photo,phone,checkInDate,checkOutDate,_id,price} = booking
+    console.log(photo)
     const handleBooking = () =>{
          const today = new Date();
     const checkIn = new Date(checkInDate);
@@ -66,9 +67,10 @@ const Table = ({booking,index,bookings,setBookings,bookingId}) => {
             <div className="avatar">
               <div className="mask mask-squircle h-8 w-8">
                 <img
-                  src={photo}
-                  alt="" />
+                  src={photo || 'N/A'}
+                  alt="Image" />
               </div>
+              
             </div>
             <div>
               <div className="font-bold">{name}</div>
