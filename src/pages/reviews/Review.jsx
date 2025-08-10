@@ -20,7 +20,7 @@ const Review = ({ setShowReviewModal, _id }) => {
       name,
       date: new Date().toISOString(),
     }
-    axios.post('http://localhost:5000/reviewers',reviewData)
+    axios.post('https://assignment-11-hotel-booking-server.vercel.app/reviewers',reviewData)
       .then(res=>{
         if(res.data.insertedId){
           Swal.fire({

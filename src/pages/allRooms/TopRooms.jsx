@@ -10,7 +10,7 @@ const TopRooms = () => {
     const [hotels, setHotels] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/toprated')
+        axios.get('https://assignment-11-hotel-booking-server.vercel.app/toprated')
             .then(res => setHotels(res.data))
             .catch(err => console.error("Error loading hotels", err));
     }, []);

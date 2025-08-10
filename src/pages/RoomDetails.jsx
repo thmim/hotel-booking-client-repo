@@ -13,7 +13,7 @@ const RoomDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/reviews?bookingId=${_id}`)
+      .get(`https://assignment-11-hotel-booking-server.vercel.app/reviews?bookingId=${_id}`)
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [];
         console.log(data)

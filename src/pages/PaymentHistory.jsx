@@ -14,7 +14,7 @@ const PaymentHistory = () => {
 
     setLoading(true);
     axios
-      .get(`http://localhost:5000/paymentsInfo?email=${(user.email)}`)
+      .get(`https://assignment-11-hotel-booking-server.vercel.app/paymentsInfo?email=${(user.email)}`)
       .then((res) => {
         setPayments(res.data);
         setError("");

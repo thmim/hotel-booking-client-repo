@@ -23,17 +23,17 @@ const { user } = use(AuthContext)
   const { isPending, data: hotelsInfo = {} } = useQuery({
     queryKey: ["hotels", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/hotels/${id}`);
+      const res = await axios.get(`https://assignment-11-hotel-booking-server.vercel.app/hotels/${id}`);
       return res.data;
     }
   });
 
   const createPaymentIntentMutation = useMutation({
-    mutationFn: (paymentData) => axios.post('http://localhost:5000/create-payment-intent', paymentData)
+    mutationFn: (paymentData) => axios.post('https://assignment-11-hotel-booking-server.vercel.app/create-payment-intent', paymentData)
   });
 
   const savePaymentMutation = useMutation({
-    mutationFn: (paymentInfo) => axios.post('http://localhost:5000/payments', paymentInfo)
+    mutationFn: (paymentInfo) => axios.post('https://assignment-11-hotel-booking-server.vercel.app/payments', paymentInfo)
   });
 
   if (isPending) {

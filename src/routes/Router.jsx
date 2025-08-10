@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path:"rooms",
-        loader:()=>fetch('http://localhost:5000/hotels'),
+        loader:()=>fetch('https://assignment-11-hotel-booking-server.vercel.app/hotels'),
         Component:Rooms
       },
       
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/hotels/:id",
-        loader:({params})=>fetch(`http://localhost:5000/hotels/${params.id}`),
+        loader:({params})=>fetch(`https://assignment-11-hotel-booking-server.vercel.app/hotels/${params.id}`),
         element:<PrivateRoute><RoomDetails></RoomDetails></PrivateRoute>
         
       },

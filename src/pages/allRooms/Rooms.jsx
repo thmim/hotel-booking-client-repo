@@ -18,8 +18,8 @@ console.log("min:", minPrice, "max:", maxPrice);
       setRoomsData(loadedRooms);
       return;
     }
-// https://assignment-11-hotel-booking-server.vercel.app
-    axios.get(`http://localhost:5000/hotels?min=${min}&max=${max}`)
+
+    axios.get(`https://assignment-11-hotel-booking-server.vercel.app/hotels?min=${min}&max=${max}`)
   .then(response => {
     setRoomsData(response.data);
   })
